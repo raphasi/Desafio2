@@ -1,0 +1,99 @@
+﻿@using System.Web.Optimization;
+@model Students.Models.Course
+
+@{
+    ViewBag.Title = "Editar Curso";
+}
+
+<h2>Editar Prova</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Prova</legend>
+       
+            @Html.HiddenFor(model => model.Code)
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SubjectCode, "Assunto")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("SubjectCode", String.Empty)
+            @Html.ValidationMessageFor(model => model.SubjectCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseName)
+            @Html.ValidationMessageFor(model => model.CourseName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("StartDate",@Model.StartDate.ToString("yyyy/MM/dd"))
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("EndDate", @String.Format("{0:d}", Model.EndDate))
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Timing)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Timing)
+            @Html.ValidationMessageFor(model => model.Timing)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseFee)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseFee)
+            @Html.ValidationMessageFor(model => model.CourseFee)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Remarks)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Remarks)
+            @Html.ValidationMessageFor(model => model.Remarks)
+        </div>
+
+        <p>
+            <input type="submit" value="Salvar Dados" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Retornar para a Lista", "Index")
+</div>
+
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+    // document ready code
+    $(function () {
+        $("#StartDate").datepicker({ dateFormat: "yy/mm/dd" });
+        $("#EndDate").datepicker({ dateFormat: "yy/mm/dd" });
+     }
+    );
+</script>
+
+}

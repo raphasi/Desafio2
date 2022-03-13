@@ -1,0 +1,28 @@
+﻿@using System.Web.Optimization;
+@{
+    ViewBag.Title = "Procurar Alunos";
+}
+
+<h2>Procurar Alunos</h2>
+
+@using(Ajax.BeginForm("Search", new AjaxOptions { UpdateTargetId = "divResults"}))
+{
+    <label>Nome do Aluno :</label>
+    <input type="text" name="searchname" />
+    <p/>
+    <input type="Submit" value="Localizar" />
+}
+
+<div id="divResults"></div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        // document ready code
+        $(function () {
+            $("#JoinedOn").datepicker({ dateFormat: "yy/mm/dd" });
+        }
+        );
+    </script>
+}

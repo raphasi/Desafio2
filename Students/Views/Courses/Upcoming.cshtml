@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Students.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Provas Futuras</h2>
+
+<p>
+    @Html.ActionLink("Adicionar Novo Curso", "Create") |
+    @Html.ActionLink("Curso em Andamento", "Index") |
+    @Html.ActionLink("Histórico de Cursos", "History")
+</p>
+
+@if (Model.Count() > 0)
+{
+    <table style="width:100%">
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Assunto
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Data Início
+            </th>
+            <th>
+                Horário
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Code
+                </td>
+                <td>
+                    @item.SubjectCode
+                </td>
+                <td>
+                    @item.CourseName
+                </td>
+                <td>
+                    @item.StartDate.ToString("dd-MM-yy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timing)
+                </td>
+                <td style="text-align:center">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Code }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Code }, 
+                     new { onclick = "return confirm('Deseja deletar esse curso e seus alunos ?')" }) |
+                    @Html.ActionLink("Alunos", "List",  "Students", new { id = item.Code }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+   <div class="error">Nenhum curso futuro foi localizado! </div>
+}

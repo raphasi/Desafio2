@@ -1,0 +1,126 @@
+﻿@using System.Web.Optimization;
+@model Students.Models.Student
+
+@{
+    ViewBag.Title = "Editar Aluno";
+}
+
+<h2>Editar Aluno</h2>
+
+@using (Html.BeginForm()) {
+<fieldset>
+        <legend>Detalhes do Aluno</legend>
+        <table>
+            <tr>
+                <td>
+                  @Html.LabelFor(model => model.CourseCode, "Curso")
+                </td>
+                <td>
+                    @Html.DropDownList("CourseCode", null,"CourseCode")
+                    @Html.ValidationMessageFor(model => model.CourseCode)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    No. Inscrição 
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.RollNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Fullname)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Fullname)
+                    @Html.ValidationMessageFor(model => model.Fullname)
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    @Html.LabelFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Mobile)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Mobile)
+                    @Html.ValidationMessageFor(model => model.Mobile)
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Occupation)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Occupation)
+                    @Html.ValidationMessageFor(model => model.Occupation)
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Qualification)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Qualification)
+                    @Html.ValidationMessageFor(model => model.Qualification)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.JoinedOn)
+                </td>
+                <td>
+                    @Html.TextBox("JoinedOn", @Model.JoinedOn.Value.ToString("yyyy/MM/dd"))
+                    @Html.ValidationMessageFor(model => model.JoinedOn)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.FeePaid)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.FeePaid)
+                    @Html.ValidationMessageFor(model => model.FeePaid)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Remarks)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Remarks)
+                    @Html.ValidationMessageFor(model => model.Remarks)
+                </td>
+            </tr>
+        </table>
+        <p />
+        <input type="submit" value="Atualizar Dados" />
+        <div class="message">@ViewBag.Message</div>
+    </fieldset>
+}
+
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        // document ready code
+        $(function () {
+            $("#JoinedOn").datepicker({ dateFormat: "yy/mm/dd" });
+        }
+        );
+    </script>
+}

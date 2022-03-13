@@ -1,0 +1,139 @@
+﻿@using System.Web.Optimization;
+@model Students.Models.Student
+@{
+    ViewBag.Title = "Adicionar Aluno";
+}
+<h2>Adicionar Aluno</h2>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Detalhes do Aluno</legend>
+
+        <table>
+             <tr>
+                 <td>@Html.LabelFor(model => model.CourseCode, "Curso")</td>
+                 <td>
+                     @Html.DropDownList("CourseCode",null, new { onchange="getRollNo()" , onblur="getRollNo()"})
+                     @Html.ValidationMessageFor(model => model.CourseCode)
+                 </td>
+             </tr>
+            <tr>
+                <td>
+                     @Html.LabelFor(model => model.RollNo)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.RollNo)
+                    @Html.ValidationMessageFor(model => model.RollNo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   @Html.LabelFor(model => model.Fullname)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Fullname)
+                    @Html.ValidationMessageFor(model => model.Fullname)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Mobile)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Mobile)
+                    @Html.ValidationMessageFor(model => model.Mobile)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Occupation)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Occupation)
+                    @Html.ValidationMessageFor(model => model.Occupation)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Qualification)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Qualification)
+                    @Html.ValidationMessageFor(model => model.Qualification)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.JoinedOn)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.JoinedOn)
+                    @Html.ValidationMessageFor(model => model.JoinedOn)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.FeePaid)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.FeePaid, new { onblur = "validateCourseFee()" })
+                    @Html.ValidationMessageFor(model => model.FeePaid)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Remarks)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Remarks)
+                    @Html.ValidationMessageFor(model => model.Remarks)
+                </td>
+            </tr>
+        </table>
+        <p/>
+        <input type="submit" value="Adicionar Aluno" />
+    </fieldset>
+}
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        var courseFee;
+        // document ready code
+        $(function () {
+            $("#JoinedOn").datepicker({ dateFormat: "yy/mm/dd" });
+        }
+        );
+
+        function getRollNo() {
+            var courseCode = $("#CourseCode").val();
+            var url =  "Rollno/" + courseCode;
+            $.getJSON(url, {}, function (data) {
+                $("#RollNo").val(data.Rollno);
+                courseFee = data.CourseFee;
+            });
+        }
+
+        function validateCourseFee() {
+            if ( $("#FeePaid").val() > courseFee)
+            {
+                alert("O Valor pago é maior do que o valor do Curso !");
+                $("#FeePaid").focus();
+             
+            }
+        }
+    </script>
+}
