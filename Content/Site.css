@@ -1,0 +1,110 @@
+﻿body {
+    font-size: 12pt;
+    font-family: 'Trebuchet MS';
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+th {
+    background-color:navy;
+    color:white;
+    font-weight : bold;
+}
+
+.center  {
+    text-align:center;
+}
+.banner {
+    background-color: red;
+    color:white;
+    font-size:22pt;
+    font-family:Arial;
+    font-weight:bold;
+    letter-spacing:5pt;
+    text-align:center;
+}
+
+.menu {
+    background-color: #eeeeee;
+}
+.colhead {
+    background-color: darkgray;
+    color:white;
+    font-weight:800;
+}
+.message {
+    color: maroon;
+    font-family:Arial;
+    font-size:12pt;
+    font-weight :bold;
+}
+
+.error {
+    color: red ;
+    font-family:Arial;
+    font-size:12pt;
+    font-weight :bold;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+input[type=submit] {
+    background-color: #A046AF;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}

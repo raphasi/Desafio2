@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Deletar Aluno";
+}
+
+<h2>Deletar Aluno</h2>
+
+<div class="message">
+    Student [@ViewBag.Fullname] foi deletado do Curso [@ViewBag.CourseName]
+</div>
+
+<p/>
+@Html.ActionLink("Lista de Alunos","List", new { id = @ViewBag.CourseCode})
+

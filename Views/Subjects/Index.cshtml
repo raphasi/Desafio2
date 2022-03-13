@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Students.Models.Subject>
+
+@{
+    ViewBag.Title = "Assuntos";
+}
+
+<h2>Cursos</h2>
+
+<p>
+    @Html.ActionLink("Adicionar Nova Prova", "Create")
+</p>
+<table style="width:100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td class="center">
+            @Html.ActionLink("Deletar", "Delete", new { id =  Server.UrlPathEncode(item.Code) }, 
+                  new  { onclick = "return confirm('Deseja deletar essa prova ?')" })
+            @Html.ActionLink("Cursos", "List", "Courses", new { id = Server.UrlPathEncode(item.Code) },null)
+
+        </td>
+    </tr>
+}
+</table>

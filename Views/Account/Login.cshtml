@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <img class="img-fluid w-100" src="~/Content/images/banner_sistema.png" alt="about image" />
+    <!-- Newsletter section -->
+    <section class="newsletter-section" style="text-align:center">
+
+        <div class="container">
+
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "newsletter-form" }))
+            {
+                <input type="text" name="user" required="required" placeholder="LOGIN de usuário" />
+                <input type="password" name="password" required="required" placeholder="Senha" />
+                <p />
+                <button class="site-btn" type="submit" value="Enviar">
+                    Entrar  <img src="~/Content/icons/double-arrow.png" />
+                </button>
+                <div class="error">
+                    @ViewBag.Message
+                </div>
+            }
+
+        </div>
+
+    </section>
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-left-pic">
+                <img src="~/Content/images/boneco-left-footer.png" alt="" />
+            </div>
+            <div class="footer-text">
+                <!-- logo -->
+                <a class="" href="index.html"><img class="img-fluid mb-6" src="~/Content/images/logo-branco-roxo.png" alt="logo" /></a>
+                <ul class="list-unstyled" style="color:white;">
+                    <li class="mb-2">Porto Alegre, Rio Grande do Sul, BRASIL</li>
+                    <li class="mb-2">contato@tftec.com.br</li>
+                    <li class="mb-2">CNPJ: 41.135.632/0001-40</li>
+                </ul>
+            </div>
+
+            <div class="footer-right-pic">
+                <img src="~/Content/images/boneco-footer-right.png" alt="" />
+            </div>
+            <div class="footer-social d-flex justify-content-center">
+                <a href="https://www.youtube.com/channel/UCyFktIP0OmZDoIobmbEnyQQ?sub_confirmation=1"><i class="fa fa-youtube"></i></a>
+                <a href="https://www.facebook.com/tftectreinamentosonline"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/tftec.online/"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/tftec-treinamentos-online-625816191/"><i class="fa fa-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                <a href="" style="color:white;">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> Todos os direitos reservados <i class="fa fa-cloud-upload" aria-hidden="true"></i> by <a href="https://tftec.com.br" target="_blank">TFTEC</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
+</body>
+
+</html>
